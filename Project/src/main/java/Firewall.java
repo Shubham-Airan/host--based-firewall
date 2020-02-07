@@ -33,7 +33,7 @@ public class Firewall {
 
         for (int i = startIndex; i < endIndex; i++) {
             Rules rule = firewallRules.get(i);
-            if (direction.equals(rule.getDirection()) && protocol.equals(rule.getProtocol()) && (port >= rule.getStartPort() && port <= rule.getEndPort()) && rule.isInRange(IPAddress))
+            if (direction.equals(rule.getDirection()) && protocol.equals(rule.getProtocol()) && (port >= rule.getStartPort() && port <= rule.getEndPort()) && rule.isPacketIPInRange(IPAddress))
                 return true;
         }
         return false;

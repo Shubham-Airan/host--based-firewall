@@ -81,12 +81,12 @@ public class Rules {
         return result;
     }
 
-    boolean isInRange(String ipToCheck) {
+    boolean isPacketIPInRange(String packet_IPAddress) {
         try {
-            long ipLo = ipToLong(InetAddress.getByName(start_IPAddress));
-            long ipHi = ipToLong(InetAddress.getByName(end_IPAddress));
-            long ipToTest = ipToLong(InetAddress.getByName(ipToCheck));
-            return (ipToTest >= ipLo && ipToTest <= ipHi);
+            long start_IP = ipToLong(InetAddress.getByName(start_IPAddress));
+            long end_IP = ipToLong(InetAddress.getByName(end_IPAddress));
+            long packet_IP = ipToLong(InetAddress.getByName(packet_IPAddress));
+            return (packet_IP >= start_IP && packet_IP <= end_IP);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

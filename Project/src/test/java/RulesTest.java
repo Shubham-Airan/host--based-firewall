@@ -61,15 +61,15 @@ public class RulesTest {
     @Test
     public void isInRange() {
         Rules rule=new Rules("inbound,tcp,80,192.168.1.2");
-        assertEquals(true,rule.isInRange("192.168.1.2"));
-        assertEquals(false,rule.isInRange("193.168.1.2"));
+        assertEquals(true,rule.isPacketIPInRange("192.168.1.2"));
+        assertEquals(false,rule.isPacketIPInRange("193.168.1.2"));
 
         Rules rule1=new Rules("outbound,udp,64-90,192.168.4.100-192.168.5.50");
-        assertEquals(true,rule1.isInRange("192.168.4.200"));
-        assertEquals(true,rule1.isInRange("192.168.5.2"));
-        assertEquals(false,rule1.isInRange("192.168.4.1"));
-        assertEquals(false,rule1.isInRange("192.168.5.200"));
-        assertEquals(false,rule1.isInRange("193.168.5.200"));
+        assertEquals(true,rule1.isPacketIPInRange("192.168.4.200"));
+        assertEquals(true,rule1.isPacketIPInRange("192.168.5.2"));
+        assertEquals(false,rule1.isPacketIPInRange("192.168.4.1"));
+        assertEquals(false,rule1.isPacketIPInRange("192.168.5.200"));
+        assertEquals(false,rule1.isPacketIPInRange("193.168.5.200"));
 
     }
 }
